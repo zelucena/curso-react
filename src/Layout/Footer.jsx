@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <Navbar as="footer" fixed="bottom" bg="dark" variant="dark">
             <address>
-                <a href="https://google.com.br" target="blank">
+                <a href="https://google.com.br" target="blank" className="mr-2">
                     <Linkedin height="30px" width="30px" />
                 </a>
                 <a href="https://google.com.br" target="blank">

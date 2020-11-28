@@ -1,7 +1,14 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-export default function TodoItem({ index, handleToggleStatus, handleDelete, todo }) {
+
+export default function TodoItem({ 
+    index,
+    handleToggleStatus,
+    handleDelete,
+    handleEdit,
+    todo
+}) {
     const { title, completed } = todo
 
     return (
@@ -16,10 +23,19 @@ export default function TodoItem({ index, handleToggleStatus, handleDelete, todo
                 <Form.Check
                     type="checkbox"
                     value={completed}
-                    onChange={handleToggleStatus}
+                    onClick={handleToggleStatus}
                 />
             </td>
             <td>
+                <Button
+                    type="button"
+                    variant="primary"
+                    size="sm"
+                    className="ml-2"
+                    onClick={handleEdit}
+                >
+                    Editar
+                </Button>
                 <Button
                     type="button"
                     variant="danger"
@@ -36,6 +52,7 @@ export default function TodoItem({ index, handleToggleStatus, handleDelete, todo
 
 TodoItem.propTypes = {
     index: PropTypes.number,
+    handleEdit: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleToggleStatus: PropTypes.func.isRequired,
     todo: PropTypes.shape({

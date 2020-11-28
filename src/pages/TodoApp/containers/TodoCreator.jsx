@@ -2,18 +2,20 @@ import React, { useRef, useEffect } from 'react'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { useTodoContext, types as todoTypes } from 'pages/TodoApp/state/Todo'
-import validationSchema from './validationSchema'
+import validationSchema from 'pages/TodoApp/validationSchema'
 
 export default function TodoCreator () {
     const inputRef = useRef(null)
 
     const { dispatchToTodos } = useTodoContext();
-    const { handleSubmit, getFieldProps, touched, errors, isValid } = useFormik({
+    const { handleSubmit, getFieldProps, errors } = useFormik({
         initialValues: {
             title: '',
         },
         validationSchema,
         validateOnMount: true,
+        validateOnChange: true,
+        validateOnBlur: false,
         onSubmit: (values, { setFieldValue }) => {
             dispatchToTodos({type: todoTypes.ADD_TODO, payload: values});
             setFieldValue('title', '', false)
@@ -22,7 +24,7 @@ export default function TodoCreator () {
 
     useEffect(() => {
         inputRef.current.focus()
-    });
+    }, []);
 
     return (
         <Form onSubmit={handleSubmit} className="mb-4">
@@ -34,7 +36,7 @@ export default function TodoCreator () {
                         autoComplete="off"
                         placeholder="Nova tarefa..."
                         ref={inputRef}
-                        isInvalid={touched.title && errors.title}
+                        isInvalid={errors.title}
                         {...getFieldProps('title')}
                     />
                     <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback>
@@ -46,7 +48,6 @@ export default function TodoCreator () {
                     <Button
                         type="submit"
                         variant="primary"
-                        disabled={!isValid}
                     >
                         Adicionar tarefa
                     </Button>

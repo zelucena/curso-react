@@ -1,13 +1,13 @@
 import React from 'react'
 import Layout from 'Layout'
-import TodoApp from './pages/TodoApp'
+import Router from './Router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App () {
+function App() {
     return (
         <Layout>
-            <TodoApp />
+            <Router />
         </Layout>
     )
 }
