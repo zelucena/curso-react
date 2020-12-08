@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Container } from 'react-bootstrap'
 import Header from './Header';
 import Footer from './Footer';
-export default function Layout ({children}) {
+export default function Layout({ children }) {
     return (
         <>
             <Header />
