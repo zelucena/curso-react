@@ -20,7 +20,7 @@ const BookList = () => {
                         </Spinner>
                     )}
                     {!loading && error && (
-                        <Alert variant="error">{error.message}</Alert>
+                        <Alert variant="danger">{error.message}</Alert>
                     )}
                     {!loading && data && (
                         <ul>
