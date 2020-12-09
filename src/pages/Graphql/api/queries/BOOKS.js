@@ -13,4 +13,4 @@ const BOOKS = gql`
     }
 `
 
-export { BOOKS }
+export default BOOKS

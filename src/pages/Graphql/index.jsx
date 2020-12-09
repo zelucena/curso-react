@@ -1,13 +1,16 @@
 import React from 'react'
 import { ApolloProvider } from 'react-apollo'
-import client from './api/client'
 import GraphqlApp from './GraphQLApp'
+import { useAPI, APIProvider } from './api/APIContext'
 
 const Graphql = () => {
+    const { client } = useAPI()
     return (
-        <ApolloProvider client={client}>
-            <GraphqlApp />
-        </ApolloProvider>
+        <APIProvider>
+            <ApolloProvider client={client}>
+                <GraphqlApp />
+            </ApolloProvider>
+        </APIProvider>
     );
 }
 

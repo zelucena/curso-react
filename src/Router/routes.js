@@ -7,17 +7,17 @@ export default [
     {
         path: '/',
         exact: true,
-        Component: TodoApp,
-        Layout: DefaultLayout,
+        component: TodoApp,
+        layout: DefaultLayout,
     },
     {
         path: '/graphql',
         exact: true,
-        Component: Graphql,
-        Layout: DefaultLayout,
+        component: Graphql,
+        layout: DefaultLayout,
     },
     {
-        Component: Status404,
-        Layout: DefaultLayout,
+        component: Status404,
+        layout: DefaultLayout,
     }
 ]

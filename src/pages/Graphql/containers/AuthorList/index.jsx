@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Spinner, Alert } from 'react-bootstrap'
 
-const BookList = ({ bookQuery }) => {
-    const { loading, error, data } = bookQuery
+const AuthorList = ({ authorsQuery }) => {
+    const { loading, error, data } = authorsQuery
     return (
         <>
             <Row>
                 <Col>
-                    <h2>BookList</h2>
+                    <h2>Lista de Autores</h2>
                 </Col>
             </Row>
             <Row>
@@ -23,11 +23,10 @@ const BookList = ({ bookQuery }) => {
                     )}
                     {!loading && data && (
                         <ul>
-                            {data?.books.map(book => {
-                                const authors = book.authors.map(author => author.name).join(',')
+                            {data?.authors.map(autor => {
                                 return (
-                                    <li key={book.id}>
-                                        {book.title} ({authors})
+                                    <li key={autor.id}>
+                                        {autor.name}
                                     </li>
                                 )
                             })}
@@ -38,8 +37,8 @@ const BookList = ({ bookQuery }) => {
         </>
     )
 }
-export default BookList
+export default AuthorList
 
-BookList.propTypes = {
-    bookQuery: PropTypes.object.isRequired
+AuthorList.propTypes = {
+    authorsQuery: PropTypes.object.isRequired
 }
